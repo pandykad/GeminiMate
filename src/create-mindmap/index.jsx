@@ -5,6 +5,9 @@ import { Transformer } from 'markmap-lib';
 import FileUpload from '@/components/custom/FileUpload';
 import { toast } from "sonner";
 import uploadFile from '@/lib/fileUploadUtil';
+import Loader from '@/components/custom/Loader';
+import Hero from './hero';
+import ScrollDown from './scrollDown';
 
 const transformer = new Transformer();
 
@@ -22,6 +25,7 @@ export default function MarkmapHooks() {
   const refMm = useRef(null);
   const refToolbar = useRef(null);
   const [file, setFile] = useState(null);
+  const [generateButtonClicked, setGenerateButtonClicked] = useState(false)
 
   function renderToolbar(mm, wrapper) {
     console.log("rendering Toolbar");
@@ -90,6 +94,8 @@ export default function MarkmapHooks() {
       return;
     }
 
+    setGenerateButtonClicked(true)
+
     const uploadUrl = 'http://localhost:3000/api/generateMindmap'; 
 
     try {
@@ -102,26 +108,31 @@ export default function MarkmapHooks() {
     } catch (error) {
       console.error('Error:', error);
       toast("Error uploading file");
+    } finally {
+        setGenerateButtonClicked(false)
     }
   };
 
   return (
-    <div className='flex flex-col items-center p-10 gap-5'>
-      <div className='text-center'>
-        <h1 className='text-5xl pt-10 pb-5'>
-          Supercharge your learning with Mindmapping!
-        </h1>
-        <h1 className='text-xl pt-5 pb-5'>
-          Generate mindmap from any informational content, right from ancient history to modern science! 📚
-        </h1>
+    <>      
+      <div className="flex flex-col items-center justify-center h-[100vh]">
+        <Hero/>
+        <ScrollDown/>
       </div>
-      <FileUpload generateButton={"Create Mindmap!"} setFile={setFile} handler={onGenerateMindmapHandler} />
-      <div className='flex-1 w-full flex justify-center items-center'>
-        <div className='relative w-full h-full'>
-          <svg className="w-full h-[80vh] outline outline-2 outline-offset-2 rounded-md outline-yellow-200" ref={refSvg} />
-          <div className="absolute bottom-1 right-1" ref={refToolbar}></div>
+
+      <div className='mx-48 bg-slate-100 h-[2px] rounded-full'></div>
+
+      <div className='grid grid-cols-4 gap-4 w-[95vw] h-screen'>
+        <div className='flex justify-center items-center'>
+         {!generateButtonClicked ? <FileUpload generateButton={"Create Mindmap!"} setFile={setFile} handler={onGenerateMindmapHandler}/> : <Loader/> }
+        </div>
+        <div className='col-span-3 w-full flex justify-center items-center'>
+            <div className='relative w-full h-full flex items-center justify-center'>
+                <svg className="w-full h-[90vh] outline outline-2 outline-offset-2 rounded-md outline-slate-300" ref={refSvg} />
+                <div className="absolute bottom-1 right-1" ref={refToolbar}></div>
+            </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

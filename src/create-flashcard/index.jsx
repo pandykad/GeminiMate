@@ -3,16 +3,13 @@ import uploadFile from "@/lib/fileUploadUtil";
 import { toast } from "sonner";
 import FileUpload from "@/components/custom/FileUpload";
 import { FlashcardArray } from "react-quizlet-flashcard";
-import './loader.css'
+import './wand-loader.css'
 import { TypeAnimation } from 'react-type-animation';
-
-
+import './bg.css'
 import 'ldrs/ring'
+import { helix } from 'ldrs'
+import Loader from "@/components/custom/Loader";
 
-import { grid, quantum, helix } from 'ldrs'
-
-grid.register()
-quantum.register()
 helix.register()
 
 
@@ -116,7 +113,7 @@ function CreateFlashCard() {
                         />
                 </div>
 
-        const prof = <div className="flex flex-col gap-10 justify-center items-center">             
+        const prof = <div className="flex flex-col gap-10 justify-center items-center rounded-[150px] bg-slate-100 w-[27vw] h-[30vh] shadow-lg">             
         <l-helix size="90" speed="2.3" color="#4285F4"></l-helix>
         <div style={{ color: textColor }}> 
         <TypeAnimation
@@ -164,65 +161,64 @@ function CreateFlashCard() {
 
 
 
-  return (
+return (
     <>
-      <div className="p-10">
-        <h1 className="text-center text-6xl pt-10 pb-5">
-          Supercharge your learning with Flashcards!
-        </h1>
-        <h1 className="text-center text-xl pt-5 pb-5">
-          Generate flashcards from any text-book, any document shared by your
-          teacher 📚
-        </h1>
+      {/* Hero Section */}
+      <div className="flex flex-col items-center justify-center h-[100vh]">
+        <div className="text-center">
+          <h1 className="text-5xl pb-2">
+            Supercharge your learning with Flashcards!
+          </h1>
+          <h1 className="text-xl pt-5 pb-10">
+            Generate flashcards from any text-book, any document shared by your
+            teacher 📚
+          </h1>
+        </div>
+        <img
+          src="src/assets/flashcard-hero.svg"
+          alt="Flashcard Illustration"
+          className="bottom-10 w-3/4 h-auto max-w-lg"
+        />
+        {/* Bouncing Arrow Indicator */}
+        <div className="absolute bottom-5 rounded-lg p-1 items-center justify-center flex flex-col">
+            <div className="animate-bounce">
+            <h3 className="bg-moving-gradient rounded-full p-1 px-3 hover:shadow-lg">Scroll down to use</h3>
+            </div>
+          <svg
+            className="w-8 h-8 text-gray-500 "
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </div>
       </div>
-      <div className="flex justify-center">
-        {/* {!result ? (
-          <FileUpload
-            handler={onGenerateFlashCardHandler}
-            setFile={setFile}
-            generateButton={"Get FlashCards!"}
-          />
-        ) : (
-            
-          <FlashcardArray cards={result} />
-        )} */}
-         {!generateButtonClicked && result == null ? (
+
+      {/* Content Section */}
+      <div className="flex flex-col items-center justify-center h-screen bg-moving-gradient">
+
+        {!generateButtonClicked && result == null ? (
           <FileUpload
             handler={onGenerateFlashCardHandler}
             setFile={setFile}
             generateButton={"Get FlashCards!"}
           />
         ) : generateButtonClicked && result == null ? (
-        //   <l-grid size="90" speed="1.5" color="#EA1335"></l-grid>
-        <div className="flex flex-col gap-4">             
-            {/* {loader}
-            <TypeAnimation
-            sequence={[
-                'Gemini',
-                500,
-                'says', //  Continuing previous Text
-                500,
-                'Gemini says',
-                500,
-                'Abra ka Dabra!',
-                500,
-                'Gemini says "Abra ka Dabra!"',
-                500,
-            ]}
-            style={{ fontSize: '2em' }}
-            repeat={Infinity}
-            /> */}
-            {prof}
-        </div>
+            <Loader/>
         ) : (
-        
           <FlashcardArray cards={result} />
         )}
-
-        {/* { prof } */}
       </div>
     </>
   );
 }
+  
 
 export default CreateFlashCard;

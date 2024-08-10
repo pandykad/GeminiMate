@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 
-function FileUpload({handler, setFile, generateButton}) {
-  return (
-   <>
-        <div>
-     
+function FileUpload({ handler, setFile, generateButton }) {
+    const [fileName, setFileName] = useState("No file selected...");
+
+    const handleFileChange = (e) => {
+        if (e.target.files && e.target.files.length > 0) {
+            const file = e.target.files[0];
+            setFile(file);
+            setFileName(file.name);
+        } else {
+            setFileName("No file selected...");
+        }
+    };
+
+    return (
+        <div className="flex flex-col justify-center items-center gap-2 w-auto">
             <label
                 htmlFor="uploadFile1"
-                className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]"
+                className="bg-white text-white font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-100 border-solid mx-auto font-[sans-serif] px-5 rounded-xl bg-moving-gradient"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="w-11 mb-2 fill-gray-500"
+                    className="w-11 mb-2 fill-white"
                     viewBox="0 0 32 32"
                 >
                     <path
@@ -25,20 +35,25 @@ function FileUpload({handler, setFile, generateButton}) {
                     />
                 </svg>
                 Upload file
-                <input type="file" id="uploadFile1" className="hidden" onChange={(e) => {
-                    setFile(e.target.files[0]);
-                    console.log(e.target.files[0]);
-                }} />
-                <p className="text-xs font-medium text-gray-400 mt-2">
-                    PNG, JPG SVG, WEBP, and GIF are Allowed.
+                <input
+                    type="file"
+                    accept=".pdf"
+                    id="uploadFile1"
+                    className="hidden"
+                    onChange={handleFileChange}
+                />
+                <p className="text-xs font-medium text-white mt-2">
+                    PDFs are Allowed.
                 </p>
             </label>
 
-            <Button onClick={handler}>{generateButton}</Button>
+            <h3>{fileName}</h3>
 
+            <div className="">
+                <Button onClick={handler}>{generateButton}</Button>
+            </div>
         </div>
-   </>
-  );
+    );
 }
 
 export default FileUpload;

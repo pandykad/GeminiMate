@@ -3,12 +3,12 @@ import React from 'react'
 function Header() {
   return (
     <>
-    <header className="bg-white lg:py-8">
-    <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <nav className="relative flex items-center justify-between h-16 bg-white lg:rounded-md lg:shadow-lg lg:h-24 lg:px-8 lg:py-6">
+    <header className="bg-white lg:pt-8 lg:z-10">
+    <div className="px-4 mx-auto sm:px-6 lg:px-8 flex justify-center items-center lg:z-50">
+        <nav className="fixed top-7 flex items-center justify-between h-16 bg-white lg:rounded-md lg:shadow-lg lg:h-24 lg:w-fit lg:px-8 lg:py-6">
             <div className="flex-shrink-0">
                 <a href="#" title="" className="flex">
-                    <img className="w-auto h-8 lg:h-14" src="src/assets/logo.png" alt="SchoolyLogo" />
+                    <img className="w-auto h-8 lg:h-14" src="src/assets/logo.png" alt="Schooly" />
                 </a>
             </div>
 
@@ -23,20 +23,20 @@ function Header() {
             </button>
 
             <div className="hidden ml-10 lg:flex lg:items-center lg:mr-auto lg:space-x-10">
-                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
+                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">FlashCards</a>
 
-                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Solutions </a>
+                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">MindMapper</a>
 
-                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Resources </a>
+                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">Quizrator</a>
 
-                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Pricing </a>
+                <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600">Roadmapper</a>
             </div>
 
-            <div className="hidden lg:flex lg:items-center lg:space-x-10">
+            {/* <div className="hidden lg:flex lg:items-center lg:space-x-10">
                 <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Sign up </a>
 
                 <a href="#" title="" className="text-base font-medium text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Sign in </a>
-            </div>
+            </div> */}
         </nav>
 
         <nav className="flex flex-col py-4 space-y-2 lg:hidden">
