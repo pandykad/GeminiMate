@@ -3,35 +3,27 @@ import { GeminiContext } from '../GeminiContext/GeminiContext';
 import Slider from '../Slider/Slider';
 import './bg.css'
 import uploadFile from '@/lib/fileUploadUtil';
+import { toast } from "sonner";
+
+
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const QuizActionBar = () => {
-    const { sendPrompt, difficulty, setDifficulty, numberOfQuestions, setNumberOfQuestions, uploadedImage, setUploadedImage, uploadImage, topics } = useContext(GeminiContext);
+    const { sendPrompt, difficulty, setDifficulty, numberOfQuestions, setNumberOfQuestions, uploadedFile, setUploadedFile, uploadImage, topics } = useContext(GeminiContext);
     const [fileName, setFileName] = useState("No file selected (PDF accepted)")
 
     const handleFileChange = async (event) => {
-
-        setUploadedImage(event.target.files[0]);
+        setUploadedFile(event.target.files[0]);
         setFileName(event.target.files[0].name);
-
-        const uploadUrl = ""
-        console.log("working")
-
-        try {
-            const result = await uploadFile(uploadImage, uploadUrl);
-            if (result) {
-            //   toast("Response received successfully from Gemini");
-            //   console.log(result.substring(3, result.length - 3));
-            //   handleChange(result.substring(3, result.length - 3));
-            }
-          } catch (error) {
-            console.error('Error:', error);
-            // toast("Error uploading file");
-          } finally {
-            setUploadedImage(null);
-          }
     }
 
     const handleUpload = async () => {
+        if (!uploadedFile) {
+            console.log("Please select a File");
+            toast("Please select a File");
+            return;
+        }
+
         await uploadImage();
     }
 
@@ -76,15 +68,20 @@ const QuizActionBar = () => {
             </button>
 
             <h2 className='text-center text-slate-50 text-lg'>Topics</h2>
-            {topics.map((topic, index) => (
-                <div 
-                    key={topic} 
-                    onClick={async () => await sendPrompt(topic, numberOfQuestions, difficulty)} 
-                    className='p-2 cursor-pointer bg-white mb-2 rounded-2xl text-center hover:bg-black hover:text-white'
-                >
-                    {topic}
-                </div>
-            ))}
+            
+            <ScrollArea className="h-[30vh] rounded-md border p-4">
+                {topics.map((topic, index) => (
+                    <div 
+                        key={topic} 
+                        onClick={async () => await sendPrompt(topic, numberOfQuestions, difficulty)} 
+                        className='p-2 cursor-pointer bg-white mb-2 rounded-2xl text-center hover:bg-black hover:text-white'
+                    >
+                        {topic}
+                    </div>
+                ))}
+            </ScrollArea>
+
+            
 
             <h3 className='mt-8 text-center text-white text-lg'>Adjust Difficulty</h3>
             <Slider min={1} max={10} step={1} value={difficulty} setValue={setDifficulty} />

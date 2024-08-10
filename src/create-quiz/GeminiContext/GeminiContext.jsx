@@ -1,5 +1,8 @@
 import React, { createContext, useState } from 'react'
 import { runGemini, runGeminiImage, runGeminiQuizAnalysis } from '../geminiConfig/gemini';
+import uploadFile from '@/lib/fileUploadUtil';
+
+
 
 export const GeminiContext = createContext();
 
@@ -13,7 +16,7 @@ const GeminiContextProvider = (props) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
-  const [uploadedImage, setUploadedImage] = useState(null)
+  const [uploadedFile, setUploadedFile] = useState(null)
   const [topics, setTopics] = useState(['Math', 'Science', 'History', 'Geography'])
   const [userAnswers, setUserAnswers] = useState([])
   const [userAnalytics, setUserAnalytics] = useState({})
@@ -87,39 +90,45 @@ const GeminiContextProvider = (props) => {
   }
 
   const uploadImage = async () => {
-    if (!uploadedImage) {
-      alert("Please select a file to upload.");
-      return;
-    }
 
-    const reader = new FileReader();
-    let prompt = `The file contains my syllabus. 
-    Can you analyze it and return the important topics which are essential for study and can be quized.
-    Return the topics on new lines.
-    For example:
-    Topic1
-    Topic2
-    Topic3
-    
-    Do not include any other text other than the topic names.`
+    const uploadUrl = 'http://localhost:3000/api/generateQuizTopics'; 
 
-    reader.onload = async (event) => {
-      const base64Data = event.target.result.split(',')[1];
+    console.log("handling upload")
 
-      const imageData = {
-        inlineData: {
-          data: base64Data,
-          mimeType: "image/png",
-        },
+    try {
+        const result = await uploadFile(uploadedFile, uploadUrl);
+        if (result) {
+        //   toast("Response received successfully from Gemini");
+        //   console.log(result.substring(3, result.length - 3));
+        //   handleChange(result.substring(3, result.length - 3));
+          parseTopics(result)
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        // toast("Error uploading file");
+      } finally {
+        setUploadedFile(null);
       }
 
-      let response = await runGeminiImage(prompt, imageData)
-      console.log(response)
-      parseTopics(response)
-    }
+      // const reader = new FileReader();
+      // let prompt = 
 
-    reader.readAsDataURL(uploadedImage);
-  }
+      // reader.onload = async (event) => {
+      //   const base64Data = event.target.result.split(',')[1];
+
+      //   const imageData = {
+      //     inlineData: {
+      //       data: base64Data,
+      //       mimeType: "image/png",
+      //     },
+      //   }
+
+      //   let response = await runGeminiImage(prompt, imageData)
+      //   console.log(response)
+      }
+
+    // reader.readAsDataURL(uploadedImage);
+  // }
 
   const parseTopics = (response) => {
     const topics = [];
@@ -238,7 +247,7 @@ const GeminiContextProvider = (props) => {
     currentQuestionIndex, setCurrentQuestionIndex,
     selectedOption, setSelectedOption,
     score, setScore,
-    uploadedImage, setUploadedImage,
+    uploadedFile, setUploadedFile,
     uploadImage,
     topics,
     userAnswers, setUserAnswers,

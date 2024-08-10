@@ -33,14 +33,10 @@ const generationConfig = {
 async function runGemini(prompt) {
   const chatSession = model.startChat({
     generationConfig,
-    // safetySettings: Adjust safety settings
-    // See https://ai.google.dev/gemini-api/docs/safety-settings
     history: [],
   });
 
   const result = await chatSession.sendMessage(prompt);
-  // console.log(result.response.text());
-
   return result.response.text();
 }
 

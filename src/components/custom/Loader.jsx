@@ -12,7 +12,7 @@ function Loader() {
     <>
     <div className="flex flex-col gap-4">
 
-        <div className="flex flex-col gap-7 justify-center items-center rounded-full bg-slate-50 w-[20vw] h-[24vh] shadow-lg">             
+        <div className="flex flex-col gap-7 justify-center items-center rounded-full bg-slate-50 min-w-[20vw] min-h-[24vh] shadow-lg">             
         <l-helix size="80" speed="2.5" color="#4285F4"></l-helix>
         <div style={{ color: textColor }}> 
         <TypeAnimation

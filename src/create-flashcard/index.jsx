@@ -18,7 +18,6 @@ function CreateFlashCard() {
   const [file, setFile] = useState(null);
   const [result, setResult] = useState(null);
   const [generateButtonClicked, setGenerateButtonClicked] = useState(false);
-  const [textColor, setTextColor] = useState('#34A853');
 
 
 
@@ -52,7 +51,7 @@ function CreateFlashCard() {
       console.error("Error:", error);
       toast("Error uploading file");
     } finally {
-    setGenerateButtonClicked(false); // Stop showing the loader after the upload is done or if there's an error
+      setGenerateButtonClicked(false); // Stop showing the loader after the upload is done or if there's an error
   }
   };
 
@@ -112,54 +111,6 @@ function CreateFlashCard() {
                         repeat={Infinity}
                         />
                 </div>
-
-        const prof = <div className="flex flex-col gap-10 justify-center items-center rounded-[150px] bg-slate-100 w-[27vw] h-[30vh] shadow-lg">             
-        <l-helix size="90" speed="2.3" color="#4285F4"></l-helix>
-        <div style={{ color: textColor }}> 
-        <TypeAnimation
-
-            style=
-            {{ 
-                fontSize: '2em', 
-            }}
-
-            sequence={[
-                'Gemini magic at 10%',
-                1500,
-                () => setTextColor('#4285F4'),
-
-                'Gemini magic at 12%',
-                1000,
-                () => setTextColor('#FBBC05'),
-
-                'Gemini magic at 25%',
-                1700,
-                () => setTextColor('#EA4335'),
-
-                'Gemini magic at 30%',
-                2000,
-                () => setTextColor('#34A853'),
-
-                'Gemini magic at 60%',
-                1000,
-                () => setTextColor('#4285F4'),
-
-                'Gemini magic at 80%',
-                10000,
-                () => setTextColor('#FBBC05'),
-
-                'Gemini magic at 100%',
-                // () => setTextColor('#EA4335'),
-
-            ]}
-            speed={50}
-            repeat={0}
-            omitDeletionAnimation={true}
-            />
-            </div>
-        </div>
-
-
 
 return (
     <>
