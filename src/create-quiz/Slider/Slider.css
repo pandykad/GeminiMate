@@ -1,0 +1,25 @@
+/* slider.css */
+.slider-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.slider-value {
+  margin-left: 10px;
+  font-size: 16px;
+  color: black;
+}
+
+.gemini-gradient-border {
+  color: linear-gradient(
+      45deg,
+      #4b90ff 0%,
+      #4b90ff 25%,
+      #ff5546 75%,
+      #ff5546 100%
+  );
+}

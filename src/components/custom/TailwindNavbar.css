@@ -1,0 +1,22 @@
+.gemini-gradient-border:hover {
+    position: relative;
+    border: 1px solid transparent;
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-color: white;
+    background-image: linear-gradient(white, white),
+      linear-gradient(45deg, #4b90ff, #ff5546);
+  }
+  
+  .gemini-gradient-border {
+    border: 1px solid transparent;
+  }
+  
+  .app-name {
+    background: linear-gradient(16deg, #4b90ff, #ff5546);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  

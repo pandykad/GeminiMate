@@ -1,0 +1,31 @@
+/* In your App.css or a global CSS file */
+@keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .bg-moving-gradient {
+    background: linear-gradient(45deg, #4b90ff, #4b90ff 25%, #ff5546 75%, #ff5546);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+  }
+
+  .gemini-gradient-topic {
+    color: black;
+    border: 2px solid transparent;
+    /* border-radius: 1.5rem; */
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-color: white; /* Adjust as needed */
+    background-image: linear-gradient(white, white),
+      linear-gradient(45deg, #4b90ff, #ff5546);
+  }
+  
+  
