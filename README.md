@@ -16,9 +16,9 @@ Check out the [Video Demo](https://www.youtube.com/watch?v=7PrmN6dN5rA&t=7s) to 
 
 ## Technology Stack 🛠️
 
-- **Frontend**: React.js
+- **Frontend**: React.js, ShadCN UI, Tailwind CSS
 - **Backend**: Node.js
-- **State Management**: Context API
+- **State Management**: Redux, Context API
 - **AI Integration**: Google Gemini API
 
 ## How to Run the Project 🚀
@@ -61,20 +61,8 @@ Check out the [Video Demo](https://www.youtube.com/watch?v=7PrmN6dN5rA&t=7s) to 
 
 6. **That’s it!** Your project should now be up and running.
 
-## Contribution 🤝
-
-Contributions are welcome! If you'd like to contribute to GeminiMate, please fork the repository and use a feature branch. Pull requests are warmly welcomed.
-
-1. Fork the repository.
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request.
-
-## License 📜
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact 📬
 
 For any inquiries or feedback, feel free to reach out to me at [pratikkakade542@gmail.com](mailto:pratikkakade542@gmail.com).
+
+Happy Coding!
