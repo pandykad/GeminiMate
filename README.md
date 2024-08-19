@@ -10,6 +10,10 @@
 - **Lecture Structuring**: Develop comprehensive lecture plans with real-life examples, analogies, and fun facts, making classes more engaging and effective.
 - **Beautiful and Intuitive UI**: Enjoy a seamless user experience that enhances both learning and teaching.
 
+## Demo 🎥
+
+Check out the [Video Demo](https://www.youtube.com/watch?v=7PrmN6dN5rA&t=7s) to see how GeminiMate works in real-time!
+
 ## Technology Stack 🛠️
 
 - **Frontend**: React.js
