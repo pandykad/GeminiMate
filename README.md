@@ -63,8 +63,8 @@ Check out the [Video Demo](https://www.youtube.com/watch?v=7PrmN6dN5rA&t=7s) to 
 
 ## Contact 📬
 
-For any inquiries or feedback, feel free to reach out to us: 
-Pratik Kakade: [pratikkakade542@gmail.com](mailto:pratikkakade542@gmail.com)
+For any inquiries or feedback, feel free to reach out to us:  
+Pratik Kakade: [pratikkakade542@gmail.com](mailto:pratikkakade542@gmail.com)  
 Ameya Kale: [ameya.k.kale@gmail.com](mailto:ameya.k.kale@gmail.com)
 
 Happy Coding!
