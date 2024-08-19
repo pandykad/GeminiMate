@@ -17,32 +17,45 @@
 - **State Management**: Context API
 - **AI Integration**: Google Gemini API
 
-## Installation & Setup 🖥️
+## How to Run the Project 🚀
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/pandykad/GeminiMate.git
+    git clone https://github.com/yourusername/GeminiMate.git
     ```
-2. **Navigate to the project directory**:
+
+2. **Navigate to the GeminiMate folder**:
     ```bash
     cd GeminiMate
     ```
-3. **Install dependencies**:
-    ```bash
-    npm install
-    ```
-4. **Create a `.env` file** and add your API keys and necessary environment variables.
 
-5. **Start the development server**:
-    ```bash
-    npm start
-    ```
+3. **Frontend Setup**:
+   - Install the required Node packages by running:
+     ```bash
+     npm install
+     ```
+   - Create a `.env.local` file and add your API key with the `VITE_GEMINI_API_KEY` variable.
+   - Start the frontend with:
+     ```bash
+     npm run dev
+     ```
 
-## Usage 💡
+4. **Backend Setup**:
+   - Change to the backend directory with:
+     ```bash
+     cd Backend
+     ```
+   - Install the required Node packages by running:
+     ```bash
+     npm install
+     ```
+   - Create a `.env` file and add your API key with the `GEMINI_API_KEY` variable.
+   - Run the backend server using:
+     ```bash
+     node src/index.js
+     ```
 
-- Upload documents to generate flashcards, mindmaps, quizzes, and more.
-- Review essays with AI-driven feedback.
-- Create structured lecture plans for enhanced teaching.
+6. **That’s it!** Your project should now be up and running.
 
 ## Contribution 🤝
 
