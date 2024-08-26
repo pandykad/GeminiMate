@@ -12,7 +12,7 @@
 
 ## Demo 🎥
 
-Check out the [Video Demo](https://www.youtube.com/watch?v=7PrmN6dN5rA&t=7s) to see how GeminiMate works in real-time!
+Check out the [Live App](https://geminimate.netlify.app/) and [Video Demo](https://www.youtube.com/watch?v=7PrmN6dN5rA&t=7s) to see how GeminiMate works in real-time!
 
 ## Technology Stack 🛠️
 
